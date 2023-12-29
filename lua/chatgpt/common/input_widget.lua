@@ -17,7 +17,7 @@ return function(name, on_submit)
       },
     },
     win_options = {
-      winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+      -- winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder",
     },
   }, {
     prompt = Config.options.popup_input.prompt,

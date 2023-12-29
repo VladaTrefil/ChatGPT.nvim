@@ -85,7 +85,7 @@ M.complete = function()
         readonly = true,
       },
       win_options = {
-        winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+        winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder",
       },
     })
 

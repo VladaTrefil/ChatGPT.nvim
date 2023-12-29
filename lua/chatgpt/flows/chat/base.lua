@@ -93,7 +93,7 @@ function Chat:render_role()
 
   self.role_extmark_id = vim.api.nvim_buf_set_extmark(self.chat_input.bufnr, Config.namespace_id, 0, 0, {
     virt_text = {
-      { Config.options.chat.border_left_sign, "ChatGPTTotalTokensBorder" },
+      { Config.options.chat.border_left_sign,  "ChatGPTTotalTokensBorder" },
       {
         string.upper(self.role),
         "ChatGPTTotalTokens",
@@ -436,18 +436,18 @@ function Chat:renderLastMessage()
     local total_tokens = msg.usage.total_tokens
     if total_tokens ~= nil then
       self.messages[self.selectedIndex].extmark_id =
-        vim.api.nvim_buf_set_extmark(self.chat_window.bufnr, Config.namespace_id, msg.end_line + 1, 0, {
-          virt_text = {
-            { Config.options.chat.border_left_sign, "ChatGPTTotalTokensBorder" },
-            {
-              "TOKENS: " .. msg.usage.total_tokens,
-              "ChatGPTTotalTokens",
+          vim.api.nvim_buf_set_extmark(self.chat_window.bufnr, Config.namespace_id, msg.end_line + 1, 0, {
+            virt_text = {
+              { Config.options.chat.border_left_sign,  "ChatGPTTotalTokensBorder" },
+              {
+                "TOKENS: " .. msg.usage.total_tokens,
+                "ChatGPTTotalTokens",
+              },
+              { Config.options.chat.border_right_sign, "ChatGPTTotalTokensBorder" },
+              { " ",                                   "" },
             },
-            { Config.options.chat.border_right_sign, "ChatGPTTotalTokensBorder" },
-            { " ", "" },
-          },
-          virt_text_pos = "right_align",
-        })
+            virt_text_pos = "right_align",
+          })
     end
 
     Signs.set_for_lines(self.chat_window.bufnr, msg.start_line, msg.end_line, "chat")
@@ -554,10 +554,10 @@ function Chat:display_input_suffix(suffix)
   if suffix then
     self.extmark_id = vim.api.nvim_buf_set_extmark(self.chat_input.bufnr, Config.namespace_id, 0, -1, {
       virt_text = {
-        { Config.options.chat.border_left_sign, "ChatGPTTotalTokensBorder" },
-        { "" .. suffix, "ChatGPTTotalTokens" },
+        { Config.options.chat.border_left_sign,  "ChatGPTTotalTokensBorder" },
+        { "" .. suffix,                          "ChatGPTTotalTokens" },
         { Config.options.chat.border_right_sign, "ChatGPTTotalTokensBorder" },
-        { " ", "" },
+        { " ",                                   "" },
       },
       virt_text_pos = "right_align",
     })
@@ -576,7 +576,13 @@ end
 
 function Chat:map(keys, fn, windows, modes)
   if windows == nil or next(windows) == nil then
-    windows = { self.settings_panel, self.sessions_panel, self.system_role_panel, self.chat_input, self.chat_window }
+    windows = {
+      self.settings_panel,
+      self.sessions_panel,
+      self.system_role_panel,
+      self.chat_input,
+      self.chat_window,
+    }
   end
 
   if modes == nil or next(modes) == nil then
@@ -611,8 +617,8 @@ end
 function Chat:get_layout_params()
   local lines_height = vim.api.nvim_get_option("lines")
   local statusline_height = vim.o.laststatus == 0 and 0 or 1 -- height of the statusline if present
-  local cmdline_height = vim.o.cmdheight -- height of the cmdline if present
-  local tabline_height = vim.o.showtabline == 0 and 0 or 1 -- height of the tabline if present
+  local cmdline_height = vim.o.cmdheight                     -- height of the cmdline if present
+  local tabline_height = vim.o.showtabline == 0 and 0 or 1   -- height of the tabline if present
   local total_height = lines_height
   local used_height = statusline_height + cmdline_height + tabline_height
   local layout_height = total_height - used_height
@@ -787,7 +793,7 @@ function Chat:open()
 
     if self.settings_open then
       vim.api.nvim_buf_set_option(self.settings_panel.bufnr, "modifiable", false)
-      vim.api.nvim_win_set_option(self.settings_panel.winid, "cursorline", true)
+      vim.api.nvim_win_set_option(self.settings_panel.winid, "cursorline", false)
 
       self:set_active_panel(self.settings_panel)
     else

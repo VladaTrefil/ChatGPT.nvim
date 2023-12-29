@@ -78,8 +78,8 @@ M.get_settings_panel = function(type, default_params)
   for _, key in pairs(params_order) do
     if M.params[key] ~= nil then
       local vt = {
-        { Config.options.settings_window.setting_sign .. key .. ": ", "ErrorMsg" },
-        { M.params[key] .. "", "Identifier" },
+        { Config.options.settings_window.setting_sign .. key .. ": ", "Fg0" },
+        { M.params[key] .. "",                                        "Identifier" },
       }
       table.insert(details, vt)
     end
@@ -112,9 +112,8 @@ M.get_settings_panel = function(type, default_params)
     M.open_edit_property_input(key, value, row, function(new_value)
       M.params[key] = params_validators[key](new_value)
       local vt = {
-
-        { Config.options.settings_window.setting_sign .. key .. ": ", "ErrorMsg" },
-        { M.params[key] .. "", "Identifier" },
+        { Config.options.settings_window.setting_sign .. key .. ": ", "BlueBold" },
+        { M.params[key] .. "",                                        "Identifier" },
       }
       vim.api.nvim_buf_del_extmark(M.panel.bufnr, namespace_id, M.vts[row - 1])
       M.vts[row - 1] = vim.api.nvim_buf_set_extmark(
@@ -150,7 +149,7 @@ M.open_edit_property_input = function(key, value, row, cb)
       style = "none",
     },
     win_options = {
-      winhighlight = "Normal:Normal,FloatBorder:Normal",
+      -- winhighlight = Config.options.main_window.winhighlight,
     },
   }, {
     prompt = Config.options.popup_input.prompt .. key .. ": ",

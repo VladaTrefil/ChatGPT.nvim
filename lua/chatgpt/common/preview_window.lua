@@ -25,7 +25,7 @@ function PreviewWindow:init(options)
     win_options = {
       wrap = true,
       linebreak = true,
-      winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+      winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder",
     },
   })
 

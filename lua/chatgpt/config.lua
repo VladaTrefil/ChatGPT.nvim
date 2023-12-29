@@ -1,5 +1,5 @@
 WELCOME_MESSAGE = [[
- 
+
      If you don't ask the right questions,
         you don't get the right answers.
                                       ~ Robert Half
@@ -40,7 +40,7 @@ function M.defaults()
           },
         },
         win_options = {
-          winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+          -- winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder",
         },
       },
       keymaps = {
@@ -77,23 +77,26 @@ function M.defaults()
         width_settings_open = "50%",
       },
     },
+    main_window = {
+      -- winhighlight = 'Normal:Pmenu,FloatBorder:FloatBorder',
+    },
     popup_window = {
       border = {
-        highlight = "FloatBorder",
-        style = "rounded",
+        -- highlight = "FloatBorder",
+        -- style = "rounded",
         text = {
           top = " ChatGPT ",
         },
       },
       win_options = {
-        wrap = true,
-        linebreak = true,
-        foldcolumn = "1",
-        winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+        -- wrap = true,
+        -- linebreak = true,
+        -- foldcolumn = "1",
+        -- winhighlight = 'Normal:Pmenu,FloatBorder:FloatBorder',
       },
-      buf_options = {
-        filetype = "markdown",
-      },
+      -- buf_options = {
+      --   filetype = "markdown",
+      -- },
     },
     system_window = {
       border = {
@@ -106,8 +109,8 @@ function M.defaults()
       win_options = {
         wrap = true,
         linebreak = true,
-        foldcolumn = "2",
-        winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+        -- foldcolumn = "2",
+        -- winhighlight = 'Normal:Pmenu,FloatBorder:FloatBorder',
       },
     },
     popup_input = {
@@ -121,7 +124,7 @@ function M.defaults()
         },
       },
       win_options = {
-        winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+        -- winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder",
       },
       submit = "<C-Enter>",
       submit_n = "<Enter>",
@@ -136,7 +139,7 @@ function M.defaults()
         },
       },
       win_options = {
-        winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+        -- winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder",
       },
     },
     openai_params = {
